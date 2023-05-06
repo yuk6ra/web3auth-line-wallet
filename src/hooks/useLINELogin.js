@@ -22,7 +22,7 @@ const useLINELogin = (chainId) => {
                                 name: "web3auth-line-bbb",
                                 verifier: "web3auth-line-bbb",
                                 typeOfLogin: "line",
-                                clientId: "W4sB9iEwGzUIHnTbB8xQx00SIflU8dau", // LINE Login channel ID
+                                clientId: "W4sB9iEwGzUIHnTbB8xQx00SIflU8dau",
                             },
                         },
                     },
@@ -40,6 +40,7 @@ const useLINELogin = (chainId) => {
                 // Add OpenLogin wallet adapter
                 web3auth.configureAdapter(openloginAdapter);
                 await web3auth.init();
+
                 console.log("Web3Auth initialized")
                 setWeb3auth(web3auth);
             } catch (err) {
