@@ -5,11 +5,11 @@
 
 
 ## Demo Video
-[![](https://img.youtube.com/vi/NpmHKwJo5uI/0.jpg)](https://www.youtube.com/watch?v=NpmHKwJo5uI)
+https://youtu.be/NpmHKwJo5uI
 
 ## Setup Video
 
-[![](https://img.youtube.com/vi/i2c86YyMvtg/0.jpg)](https://www.youtube.com/watch?v=i2c86YyMvtg)
+https://youtu.be/i2c86YyMvtg
 
 # References
 
