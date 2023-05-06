@@ -1,14 +1,18 @@
 import { Button, Card, CardBody, CardHeader, Center, Flex, Text } from '@chakra-ui/react'
-import React from 'react'
-// import { Web3Auth } from "@web3auth/modal";
-// import { ethers } from "ethers";
+import React, {useState} from 'react'
+import useWeb3Auth from '../hooks/useWeb3Auth'
 
 const CustomWeb3Auth = () => {
 
-    const handleTest = async () => {
+    const [account, setAccount] = useState("");
+    const { web3, error, isModalOpen, openModal, closeModal } = useWeb3Auth(
+      "0x1" // Mainnet chain ID
+    );
 
-    }
-
+  const handleConnect = async () => {
+    const accounts = await web3.eth.requestAccounts();
+    setAccount(accounts[0]);
+  };
 
     return (
 
@@ -31,7 +35,7 @@ const CustomWeb3Auth = () => {
                 <CardBody>
                     <Button
                         colorScheme='green'
-                        onClick={handleTest}
+                        onClick={handleConnect}
                     >
                         LINE Login
                     </Button>
