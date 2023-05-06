@@ -10,6 +10,7 @@ module.exports = function override(config) {
     https: require.resolve("https-browserify"),
     os: require.resolve("os-browserify"),
     url: require.resolve("url"),
+    zlib: require.resolve("browserify-zlib") // Add this line
   });
   config.resolve.fallback = fallback;
   config.plugins = (config.plugins || []).concat([
@@ -18,7 +19,7 @@ module.exports = function override(config) {
       Buffer: ["buffer", "Buffer"],
     }),
   ]);
-  config.ignoreWarnings = [/Failed to parse source map/];  
+  config.ignoreWarnings = [/Failed to parse source map/];
   config.module.rules.push({
     test: /\.(js|mjs|jsx)$/,
     enforce: "pre",
