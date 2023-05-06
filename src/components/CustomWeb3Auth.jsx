@@ -1,11 +1,16 @@
 import { Button, Card, CardBody, CardHeader, Center, Flex, Text } from '@chakra-ui/react'
 import React, { useState } from 'react'
-import useWeb3Auth from '../hooks/useWeb3Auth'
+// import useWeb3Auth from '../hooks/useWeb3Auth'
+import useLINELogin from '../hooks/useLINELogin.js'
 
 const CustomWeb3Auth = () => {
 
     const [account, setAccount] = useState("");
-    const { web3, error, isModalOpen, openModal, closeModal, handleConnect } = useWeb3Auth(
+
+    // const { web3, error, isModalOpen, openModal, closeModal, handleConnect } = useWeb3Auth(
+    //     "0x1" // Mainnet chain ID
+    // );
+    const { web3, error, isModalOpen, openModal, closeModal, handleConnect } = useLINELogin(
         "0x1" // Mainnet chain ID
     );
 
