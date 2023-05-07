@@ -5,11 +5,17 @@
 
 
 ## Demo Video
+
+### Default Modal
+https://youtu.be/xr__8v-Ggfo
+
+### No-Modal
 https://youtu.be/NpmHKwJo5uI
 
-## Setup Video
-
+## Setup Video for developers
 https://youtu.be/i2c86YyMvtg
+
+Note: Irresponsible explanation for yourself.
 
 # References
 

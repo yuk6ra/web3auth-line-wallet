@@ -1,22 +1,21 @@
 import { Button, ButtonGroup, Card, CardBody, CardHeader, Center, Flex, Text } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
-import useWeb3Auth from '../hooks/useWeb3Auth'
-// import useLINELogin from '../hooks/useLINELogin.js'
+// import useWeb3Auth from '../hooks/useWeb3Auth'
+import useLINELogin from '../hooks/useLINELogin.js'
 
-const CustomWeb3Auth = () => {
+const CustomLINELogin = () => {
 
     const [account, setAccount] = useState("");
 
     // const { web3, error, isModalOpen, openModal, closeModal, handleConnect } = useWeb3Auth(
     //     "0x1" // Mainnet chain ID
     // );
-    const { web3, error, isModalOpen, openModal, closeModal, handleConnect } = useWeb3Auth(
+    const { web3, web3auth, error, isModalOpen, openModal, closeModal, handleConnect } = useLINELogin(
         "0x1" // Mainnet chain ID
     );
-
     const handleAccount = async () => {
         try {
-            const accounts = await web3?.eth?.getAccounts();
+            const accounts = await web3auth?.eth?.getAccounts();
             if (accounts && accounts.length > 0) {
                 setAccount(accounts[0]);
             } else {
@@ -27,11 +26,11 @@ const CustomWeb3Auth = () => {
         }
     };
     useEffect(() => {
-        if (web3) {
+        if (web3auth) {
             handleAccount();
             console.log("web3 is loaded");
         }
-    }, [web3]);
+    }, [web3auth]);
 
 
     return (
@@ -48,26 +47,49 @@ const CustomWeb3Auth = () => {
                 boxShadow={'xl'}
             >
                 <CardHeader>
-                    {!account && (
                     <Center>
                         Let's get started
                     </Center>
-                    )}
-                    {account && (
-                    <Center>
-                        Welcome back
-                    </Center>
-                    )}                    
                 </CardHeader>
                 <CardBody>
-                    {!account && (
+                    <ButtonGroup>
+
                         <Button
                             onClick={() => handleConnect()}
+                            colorScheme='green'
                         >
-                            Create Wallet
+                            LINE Login
                         </Button>
-                    )}
+
+                        {isModalOpen && (
+                            <Button
+                                onClick={() => closeModal()}
+                                colorScheme='red'
+                            >
+                                Close
+                            </Button>
+                        )
+                        }
+
+                        <Button
+
+                            onClick={() => handleAccount()}
+                            colorScheme='green'
+                        >
+                            Get Account
+                        </Button>
+                    </ButtonGroup>
+
+
+                    {/* <Button
+                        colorScheme='green'
+                        onClick={() => handleConnect()}
+                    >
+                        create Account
+                    </Button> */}
                     {account && <Text>Account: {account}</Text>}
+                    {error && `Error: ${error}`}
+
                 </CardBody>
             </Card>
 
@@ -75,4 +97,4 @@ const CustomWeb3Auth = () => {
     )
 }
 
-export default CustomWeb3Auth
+export default CustomLINELogin

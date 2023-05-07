@@ -26,11 +26,6 @@ const useWeb3Auth = (chainId) => {
                     enableLogging: true,
                 });
                 await web3auth.initModal();
-                // Remove the connect call from here
-                // const web3authProvider = await web3auth.connect();
-                // console.log("Web3Auth provider:", web3authProvider);
-                // const web3 = new Web3(web3authProvider);
-                // setWeb3(web3);
         
                 setWeb3auth(web3auth); // Add this line
               } catch (err) {
