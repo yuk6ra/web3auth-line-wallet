@@ -10,12 +10,13 @@ const CustomLINELogin = () => {
     // const { web3, error, isModalOpen, openModal, closeModal, handleConnect } = useWeb3Auth(
     //     "0x1" // Mainnet chain ID
     // );
-    const { web3, web3auth, error, isModalOpen, openModal, closeModal, handleConnect } = useLINELogin(
+    const { web3, accounts, error, isModalOpen, openModal, closeModal, handleConnect } = useLINELogin(
         "0x1" // Mainnet chain ID
     );
+
     const handleAccount = async () => {
         try {
-            const accounts = await web3auth?.eth?.getAccounts();
+            const accounts = await web3?.eth?.getAccounts();
             if (accounts && accounts.length > 0) {
                 setAccount(accounts[0]);
             } else {
@@ -26,12 +27,13 @@ const CustomLINELogin = () => {
         }
     };
     useEffect(() => {
-        if (web3auth) {
+        if (web3) {
             handleAccount();
             console.log("web3 is loaded");
         }
-    }, [web3auth]);
+    }, [web3]);
 
+    console.log("accounts", accounts)
 
     return (
 
